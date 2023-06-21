@@ -1,23 +1,20 @@
-package watermark
+package main
 
 
 import (
     "image"
     "image/draw"
     "image/jpeg"
-    "image/png"
     "os"
 )
 
-
-
-func WatermarkImage(){
-	imgb, _ := os.Open("image.jpg")
+func main(){
+	imgb, _ := os.Open("1.jpg")
     img, _ := jpeg.Decode(imgb)
     defer imgb.Close()
 
-    wmb, _ := os.Open("watermark.png")
-    watermark, _ := png.Decode(wmb)
+    wmb, _ := os.Open("2.jpg")
+    watermark, _ := jpeg.Decode(wmb)
     defer wmb.Close()
 
     offset := image.Pt(200, 200)
